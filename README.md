@@ -128,6 +128,7 @@ Given the `rg-devcamp2023-container-lab` resource group exists and you're grante
    ```
 2. Login the local docker context
    ```bash
+   az login -t garaio.com
    az acr login --name acrgdc2023cntrlab
    ```
 3. Tag the container images to assign them the to the registry. Given the image have been already built.
@@ -135,4 +136,11 @@ Given the `rg-devcamp2023-container-lab` resource group exists and you're grante
    docker tag gcamp2023/demo5/rp acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/rp
    docker tag gcamp2023/demo5/db acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/db
    docker tag gcamp2023/demo5/api acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/api
+   ```
+
+4. Push the images to the registry
+   ```bash
+   docker push acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/rp
+   docker push acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/db
+   docker push acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/api
    ```
