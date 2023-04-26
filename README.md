@@ -8,4 +8,3 @@ Supply a container-based deployment with
 - An API delivering Weather Forecasts
 - An API receiving current weather conditions
 - A database to storing the weather conditions
-
