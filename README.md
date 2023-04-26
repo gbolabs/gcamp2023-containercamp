@@ -62,7 +62,7 @@ docker build -t gcamp2023/demo5/db .
 ### Run
 
 ```sh
-docker run -d -p 3000:3000 -v ~/temp/gcamp-demo/:/opt/data/ gcamp2023/demo5/db
+docker run -d -p 3000:80 -v ~/temp/gcamp-demo/:/opt/data/ gcamp2023/demo5/db
 ```
 
 ### Consume
@@ -78,4 +78,10 @@ docker run -d -p 3000:3000 -v ~/temp/gcamp-demo/:/opt/data/ gcamp2023/demo5/db
 
 # Docker Compose
 
-TODO
+Docker compose help to run multiple containers-based application into one single deployment.
+
+The `docker-compose.yml` file describes how to run the individual containers, their inter-connections and their interaction with the outside world (volumes, ports...).
+
+```yml
+
+```

@@ -1,0 +1,32 @@
+version: '3'
+services:
+  rp:
+    image: gcamp2023/demo5/rp
+    ports:
+      - "80:80"
+    networks:
+      mynet:
+        aliases:
+          - rp
+  db:
+    image: gcamp2023/demo5/db
+    volumes:
+      - ~/temp/gcamp-demo/:/opt/data/
+    networks:
+      mynet:
+        aliases:
+          - db
+  # api:
+  #   image: gcamp2023/demo5/api
+  #   networks:
+  #     mynet:
+  #         aliases:
+  #           - api
+networks:
+  mynet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/16
+          gateway: 172.25.0.1
