@@ -82,6 +82,30 @@ Docker compose help to run multiple containers-based application into one single
 
 The `docker-compose.yml` file describes how to run the individual containers, their inter-connections and their interaction with the outside world (volumes, ports...).
 
-```yml
+## Build
 
+Their is not build
+
+## Run
+
+After having built all the dependencies
+
+- `gcamp2023/demo5/rp`
+- `gcamp2023/demo5/db`
+- `gcamp2023/demo5/api`
+
+Within the directory where the `docker-compose.yml` resides, here `deploy/docker-compose.yml`.
+
+```bash
+docker-compose up -d
 ```
+
+- `-d` for daemon, non-interactive execution
+- `up` reads the `docker-compose` manifest and build the container.
+
+### Tearing down
+```bash
+docker-compose down
+```
+
+Will halt, destroy and remove all the containers being defined by the compose manifest.
