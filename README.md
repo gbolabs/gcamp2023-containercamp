@@ -9,33 +9,35 @@ Supply a container-based deployment with
 - An API receiving current weather conditions
 - A database to storing the weather conditions
 
-# Reverse Proxy
+# Individual Containers
+
+## Reverse Proxy
 
 Based on [nginx](https://hub.docker.com/_/nginx/)
 
-## Build
+### Build
 
 ```bash
 cd src/reverse-proxy/
 docker build -t gcamp2023/demo5/rp .
 ```
 
-## Run
+### Run
 ```sh
 docker run -d -p 80:80 gcamp2023/demo5/rp
 ```
 
-## Consume
+### Consume
 
 Using a browser, Postman or curl
 
-### Weather Forecast API
+#### Weather Forecast API
 
 ```bash
 curl -X GET http://localhost:80/api/weather/forecast
 ```
 
-### Weather Condition API
+#### Weather Condition API
 
 1. Submit condition (gets stored ins DB)
    ```bash
@@ -46,24 +48,24 @@ curl -X GET http://localhost:80/api/weather/forecast
    curl -X GET http://localhost:80/api/weather/condition
    ```
 
-# Database
+## Database
 
 Based on [json-server](https://github.com/typicode/json-server)
 
-## Build
+### Build
 
 ```bash
 cd src/db/
 docker build -t gcamp2023/demo5/db .
 ```
 
-## Run
+### Run
 
 ```sh
 docker run -d -p 3000:3000 -v ~/temp/gcamp-demo/:/opt/data/ gcamp2023/demo5/db
 ```
 
-## Consume
+### Consume
 
 1. Fetch all the items from the `posts` collection
    ```bash
@@ -73,4 +75,7 @@ docker run -d -p 3000:3000 -v ~/temp/gcamp-demo/:/opt/data/ gcamp2023/demo5/db
    ```bash
    curl http://localhost:3000/posts/ -X POST -d '{"title": "json-server","author": "typicode"}'
    ```
-    
+
+# Docker Compose
+
+TODO
