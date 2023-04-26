@@ -12,6 +12,13 @@ Supply a container-based deployment with
 
 # Database
 
+## Build
+
+```bash
+cd src/db/
+docker build -t gcamp2023/demo5/db .
+```
+
 ## Run
 
 Based on [json-server](https://github.com/typicode/json-server)
