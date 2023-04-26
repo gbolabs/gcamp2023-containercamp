@@ -109,3 +109,30 @@ docker-compose down
 ```
 
 Will halt, destroy and remove all the containers being defined by the compose manifest.
+
+# Using Azure Container App
+
+Using [Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/overview).
+
+1. Pushes the generated container image to a given Azure Container Registry
+2. Create a Container App Environment
+3. Create the Container Apps for the individual container images
+
+## Azure Container Registry
+
+Given the `rg-devcamp2023-container-lab` resource group exists and you're granted at least the _contributor_ role
+
+1. Create the registry
+   ```bash
+   az acr create --name acrgdc2023cntrlab --sku Basic -g rg-devcamp2023-container-lab
+   ```
+2. Login the local docker context
+   ```bash
+   az acr login --name acrgdc2023cntrlab
+   ```
+3. Tag the container images to assign them the to the registry. Given the image have been already built.
+   ```bash
+   docker tag gcamp2023/demo5/rp acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/rp
+   docker tag gcamp2023/demo5/db acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/db
+   docker tag gcamp2023/demo5/api acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/api
+   ```
