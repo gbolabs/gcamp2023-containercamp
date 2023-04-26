@@ -4,6 +4,7 @@ RUN npm install -g json-server
 
 WORKDIR /data
 VOLUME /data
+COPY sample-db.json /data/db.json
 
 EXPOSE 80
 
