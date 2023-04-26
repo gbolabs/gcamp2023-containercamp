@@ -122,6 +122,7 @@ Using [Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-a
 
 Given the `rg-devcamp2023-container-lab` resource group exists and you're granted at least the _contributor_ role
 
+
 1. Create the registry
    ```bash
    az acr create --name acrgdc2023cntrlab --sku Basic -g rg-devcamp2023-container-lab
@@ -144,3 +145,5 @@ Given the `rg-devcamp2023-container-lab` resource group exists and you're grante
    docker push acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/db
    docker push acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/api
    ```
+
+5. Now you can see the three images repository using the [Azure Portal](https://portal.azure.com/#@garaio.com/resource/subscriptions/ce167e67-9065-4703-ae02-b0ee721302a9/resourceGroups/rg-devcamp2023-container-lab/providers/Microsoft.ContainerRegistry/registries/acrgdc2023cntrlab/repository)
