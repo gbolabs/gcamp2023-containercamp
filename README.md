@@ -11,6 +11,23 @@ Supply a container-based deployment with
 
 # Individual Containers
 
+## API
+
+### Build
+
+```bash
+cd src/weatherforecast/
+docker build -t gcamp2023/demo5/api .
+```
+
+### Run
+```sh
+docker run -d -p:32778:80 -e "ASPNETCORE_ENVIRONMENT=Development" -e "ASPNETCORE_URLS=http://+:80" gcamp2023/demo5/api
+```
+
+### Consume
+<http://localhost:32778/swagger/index.html>
+
 ## Reverse Proxy
 
 Based on [nginx](https://hub.docker.com/_/nginx/)
