@@ -161,3 +161,26 @@ Given the `rg-devcamp2023-container-lab` resource group exists and you're grante
    docker push acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/db
    docker push acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/api
    ```
+
+# Deploy as app service using docker compose
+
+1. Create the storage account for the database
+   ```bash
+   az storage account create --resource-group rg-devcamp2023-container-lab --name sadevcamp2023contlab --location switzerlandnorth --sku Standard_LRS
+   ```
+
+2. Create the file share in the storrage account
+   ```bash
+   az storage share create --name dbshare-devcamp2023-container-lab --account-name sadevcamp2023contlab
+   ```
+
+3. Create the appservice plan
+   ```bash
+   az appservice plan create --name ap-devcamp2023-container-lab --resource-group rg-devcamp2023-container-lab --sku S1 --is-linux
+   ```
+
+4. Create the webapp with the docker compose file
+   ```bash
+   cd deploy-azure
+   az webapp create --resource-group rg-devcamp2023-container-lab --plan ap-devcamp2023-container-lab --name devcamp2023-container-webapp --multicontainer-config-type compose --multicontainer-config-file docker-compose.yml
+   ```

@@ -1,0 +1,42 @@
+version: '3'
+services:
+  rp:
+    image: acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/rp
+    ports:
+      - "443:80"
+    networks:
+      mynet:
+        aliases:
+          - rp
+  db:
+    image: acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/db
+    volumes:
+      - dbvol:/data
+    networks:
+      mynet:
+        aliases:
+          - db
+  api:
+    image: acrgdc2023cntrlab.azurecr.io/gcamp2023/demo5/api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      mynet:
+          aliases:
+            - api
+networks:
+  mynet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/16
+          gateway: 172.25.0.1
+
+volumes:
+    dbvol:
+      driver: azure_file
+      driver_opts:
+          share_name: dbshare-devcamp2023-container-lab
+          storage_account_name: sadevcamp2023contlab
