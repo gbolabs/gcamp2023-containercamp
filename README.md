@@ -184,3 +184,6 @@ Given the `rg-devcamp2023-container-lab` resource group exists and you're grante
    cd deploy-azure
    az webapp create --resource-group rg-devcamp2023-container-lab --plan ap-devcamp2023-container-lab --name devcamp2023-container-webapp --multicontainer-config-type compose --multicontainer-config-file docker-compose.yml
    ```
+
+## Test
+<https://devcamp2023-container-webapp.azurewebsites.net/api/weather/forecasts>
